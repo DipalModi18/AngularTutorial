@@ -1,0 +1,16 @@
+# Ignore node_modules
+/Angular_Node/node_modules/
+/bootstrap-example/node_modules/
+/ExpressAngularDist/node_modules/
+/FormApplication/node_modules/
+/FormApplication2/node_modules/
+/KarmaAngular/node_modules/
+/Login_Application/node_modules/
+/Login_Application_DB/node_modules/
+
+
+.idea/
+
+bootstrap-example
+
+KarmaAngular
