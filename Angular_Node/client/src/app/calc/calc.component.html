@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<form class="form-group" method="GET" [formGroup]="formdata" (ngSubmit)="onSubmit(formdata.value)">
+	<table>
+		<tr>
+			<td>
+				Number :
+			</td>
+			<td>
+				<input type="text" name="number" placeholder="Enter number" class="form-control" formControlName="number">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="align-content: center;">
+				<input type="submit" value="Square it!!">
+			</td>
+		</tr>
+	</table>
+</form>
+
+<h1>{{num}}</h1>

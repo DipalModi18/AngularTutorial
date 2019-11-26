@@ -1,0 +1,144 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <h2>  <!--PAssing MyEvent from ts file to view-->
+    {{myEvent.event_name}} is scheduled on {{myEvent.event_date}}
+  </h2>
+ 
+  <!--Event Binding-->
+  <select name = "country" (change)="creatingEvent($event)">
+    <option *ngFor = 'let country of countries' value = {{country}}> {{country}}</option>
+  </select>
+
+  <button (click)="creatingEvent($event)">MY BUTTON</button>
+
+  <p id="demo">{{ last_event }}</p>
+   <!--Even Binding Completes-->
+   <!--last_event shows status of last event performed : dropdown/button-->
+
+  <br/>
+  <!--Use of *ngIf directive-->
+  <div>
+    <span *ngIf = "isavailable;then condition1 else condition2">Condition is valid.</span>
+    <ng-template #condition1>Condition is valid from template</ng-template>
+    <ng-template #condition2>Condition is invalid from template</ng-template>
+ </div>
+ <button (click) = "myClickFunction($event)">Change validity</button>
+ <br/>
+
+ <!--appChangeText directive created-->
+ <p appChangeText> Hello</p>
+
+
+ <a routerLink="about">About</a> <!-- contents will be routed in router-outlet tag below-->
+
+ <div class="mainpage">
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>
+
+<!-- Using a service-->
+<h4>Service Property : {{myservice.serviceProperty }}</h4>
+<h4>Today's Date :{{ todaydate }}</h4>
+
+<br/>
+<br/><br/>
+
+</div>
+
+<div>
+<div style="width:50%; align-content: center">
+    <form #userlogin="ngForm" (ngSubmit)="onSubmitClick(userlogin.value)">
+        <table>
+          <tr>
+            <td colspan="2">
+                <h4>Templete-driven form</h4>
+      <!--In template driven forms, 
+        we need to create the model form controls by adding the ngModel directive and the name attribute. 
+        Thus, wherever we want Angular to access our data from forms, add ngModel to that tag as shown below-->
+            </td>
+          </tr>
+          <tr>
+            <td>User-ID : </td>
+            <td>
+              <input type="text" name="userid" ngModel required>
+            </td>
+          </tr>
+          <tr>
+            <td>Password : </td>
+            <td>
+              <input type="password" name="password" ngModel required>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input type="submit" value="Submit" [disabled]="userlogin.form.invalid">
+            </td>
+          </tr>
+        </table>
+      </form>
+</div>
+
+<!--Model Driven Form-->
+<div style="width:50%; align-content: center">
+  <form [formGroup]="formdata" (ngSubmit)="onSubmitClickModel(formdata.value)">
+    <table>
+      <tr>
+        <td colspan="2">
+          <h4>Model Driven Form</h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          UserID : 
+        </td>
+        <td>
+            <input type="text" name="userid" formControlName="userid">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Password : 
+        </td>
+        <td>
+          <input type="password" name="password" formControlName="password">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="submit" value="Submit" [disabled]="formdata.invalid">
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+</div>
+
+
+<ngx-avatar name="Dipal Modi" [popover]="myPopover">
+</ngx-avatar>
+  <popover-content #myPopover
+      placement="right"
+      [animation]="true" 
+      [closeOnClickOutside]="true">
+      Hello
+  </popover-content>
+
+
+<input type="text" name="timeString" [(ngModel)]="timeString">
+
+<button (click)="checkRefund()">refund</button>
+<button (click)="addSpace2()">Add space</button>
+
+<!-- <h1>User profile</h1>
+<app-user-profile></app-user-profile> -->
+
+<button type="button" class="btn btn-outline-secondary" [ngbPopover]="popoverContent" triggers="focus:blur outsideClick">
+  Hover over me!
+</button>
+<ng-template #popoverContent>
+  Hello
+</ng-template>

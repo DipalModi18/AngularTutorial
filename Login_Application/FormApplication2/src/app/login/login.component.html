@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <div class="modal" style="display: block">
+    <form class="modal-content animate" [formGroup]="formdata" (ngSubmit)="onSubmit(formdata.value)">
+  
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="Username" formControlName="username">
+        <div *ngIf=" !(username.pristine || username.valid)" class="alert alert-danger">Name is required.</div>
+  
+        <label for="psw"><b>Password</b></label>
+        <input type="{{input_type}}" placeholder="Enter Password" name="Password" formControlName="password">
+        <input type="checkbox" name="password_state" value="Show Password" (change)="onCheckboxChange()">Show Password<br>
+        <div *ngIf="!(password.pristine || password.valid)" class="alert alert-danger">Password is required.</div>
+          
+        <button type="submit" [disabled]="formdata.invalid">Login</button>
+      </div>
+  
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" class="cancelbtn" (click)="onCancelClick()">Cancel</button>
+        <span>    </span>
+        <p>Not Having an Account? Register Here</p>
+        <a RouterLinkActive="active" (click)="onRegisterClick()" target="_top">Register</a>
+        
+      </div>
+    </form>
+  </div>
+  

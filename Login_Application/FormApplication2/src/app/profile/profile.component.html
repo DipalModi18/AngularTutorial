@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<div class="modal" style="display: block">
+  <form class="modal-content animate" [formGroup]="formdata" (ngSubmit)="on_submit(formdata.value)">
+
+    <div class="container">
+      
+        <label for="name"><b>Name</b></label>
+        <input id="name" type="text" placeholder="Enter Name" name="name" formControlName="name">
+        
+        <!--<div [hidden]="!submitted && (name.valid || name.pristine)" class="alert alert-danger">Name is required.</div>-->
+        <div *ngIf=" !(name.pristine || name.valid)" class="alert alert-danger">Name is required.</div>
+        <!--<div [hidden]="!submitted && (formdata.controls.name.valid && formdata.controls.name.dirty)" class="alert alert-danger">Name is required.</div>-->
+
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="Username" formControlName="username" readonly>
+        <!--<div *ngIf="!(username.pristine || username.valid)" class="alert alert-danger">Username is required.</div>
+        <div *ngIf="username.errors?.minlength" class="alert alert-danger">UserName must be at least 4 characters long.</div>-->
+
+        <label for="age"><b>Age</b></label>
+        <input type="text" placeholder="Enter Age" name="age" formControlName="age">
+        <div *ngIf="!(age.pristine || age.valid)" class="alert alert-danger">Age is required.</div>
+        <div *ngIf="age.errors?.agevalidator" class="alert alert-danger">Age must be greater than 18</div>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" formControlName="password">
+        <div *ngIf="!(password.pristine || password.valid)" class="alert alert-danger">Password is required.</div>
+
+        <!--<div *ngIf="confirmpassword.errors?.confirmingpassword"  class="alert alert-danger">Password does not match.</div>-->
+        
+      <button type="submit" [disabled]="formdata.invalid">Save Changes</button>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn" (click)="onLogOutClick()">Log Out</button>      
+    </div>
+  </form>
+</div>
