@@ -7,3 +7,8 @@ password(varchar(20))
 
 
 ## To run the application: node server.js
+
+## Dependency yet to be added in the package-lock.json
+npm install express-session
+npm install mysql
+npm install cors
